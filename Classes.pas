@@ -1820,7 +1820,11 @@ begin
     FreeThread := Thread.FFreeOnTerminate;
     Thread.FFinished := True;
     if Assigned(Thread.OnTerminate) then
+    try
       Thread.OnTerminate(Thread);
+    except
+      Thread.OnTerminate := nil;
+    end;
     if FreeThread then
       Thread.Free;
     EndThread(result);   

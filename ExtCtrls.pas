@@ -11,7 +11,7 @@ Unit ExtCtrls;
    Notes:
    - implements TImage
    - compatible with the standard .DFM files.
-   - only use existing properties in your DFM, otherwize you'll get error on startup
+   - only use existing properties in your DFM, otherwise you'll get error on startup
 
   The contents of this file are subject to the Mozilla Public License
   Version 1.1 (the "License"); you may not use this file except in
