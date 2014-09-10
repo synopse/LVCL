@@ -354,6 +354,7 @@ function FindNext(var F: TSearchRec): integer;
 procedure FindClose(var F: TSearchRec);
 
 function Now: TDateTime;
+function Time: TDateTime;
 function FileGetDate(Handle: THandle): Integer;
 
 function EncodeTime(Hour, Min, Sec, MSec: Word): TDateTime; overload;
@@ -2566,6 +2567,27 @@ begin
     EncodeTime(UT.tm_hour, UT.tm_min, UT.tm_sec, TV.tv_usec div 1000);
 end;
 {$endif}
+
+function Time: TDateTime;
+{$ifdef MSWINDOWS}
+var SystemTime: TSystemTime;
+begin
+  GetLocalTime(SystemTime);
+  with SystemTime do
+    Result := EncodeTime(wHour, wMinute, wSecond, wMilliseconds);
+end;
+{$else}
+var T: TTime_T;
+    TV: TTimeVal;
+    UT: TUnixTime;
+begin
+  gettimeofday(TV, nil);
+  T := TV.tv_sec;
+  localtime_r(@T, UT);
+  Result := EncodeTime(UT.tm_hour, UT.tm_min, UT.tm_sec, TV.tv_usec div 1000);
+end;
+{$endif}
+
 
 function FileGetDate(Handle: THandle): Integer;
 {$ifdef MSWINDOWS}
