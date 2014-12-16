@@ -229,7 +229,7 @@ function ExtractFileDir(const FileName: string): string;
 function ExtractFileName(const FileName: string): string;
 function ExtractFileExt(const FileName: string): string;
 function ChangeFileExt(const FileName, Extension: string): string;
-
+function ExtractFileDrive(const FileName: string): string;
 function IncludeTrailingPathDelimiter(const S: string): string;
 function ExcludeTrailingPathDelimiter(const S: string): string;
 function LastDelimiter(const Delimiters, S: string): integer;
@@ -2392,10 +2392,19 @@ function ExtractFileDir(const FileName: string): string;
 var i: integer;
 begin
   i := LastDelimiter(PathDelim{$ifndef Linux}+DriveDelim{$endif}, Filename);
-  if (i>1) and (FileName[i]=PathDelim) and (not (FileName[i-1]
-    in [PathDelim{$ifndef Linux},DriveDelim{$endif}])) then
+  if (i>1) and (FileName[i]=PathDelim) and
+     (not (FileName[i-1] in [PathDelim{$ifndef Linux},DriveDelim{$endif}])) then
     dec(i);
   result := Copy(FileName,1,i);
+end;
+
+function ExtractFileDrive(const FileName: string): string;
+begin // naive implementation
+  {$ifndef Linux}
+  if (Length(FileName)>=2) and (FileName[2]=DriveDelim) then
+    result := Copy(FileName,1,2) else
+    result := '';
+  {$endif}
 end;
 
 function IsPathDelimiter(const S: string; Index: integer): Boolean;

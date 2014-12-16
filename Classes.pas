@@ -137,6 +137,7 @@ type
     constructor Create;
     function Add(const s: string): integer;
     function AddObject(const s: string; AObject: TObject): integer;
+    procedure AddStrings(Strings: TStringList);
     procedure Delete(index: integer);
     function IndexOf(const s: string): integer;
     function IndexOfObject(item: pointer): integer;
@@ -627,6 +628,13 @@ begin
   inc(fCount);
   if AObject<>nil then
     Objects[result] := AObject;
+end;
+
+procedure TStringList.AddStrings(Strings: TStringList);
+var i: integer;
+begin
+  for i := 0 to Strings.Count-1 do
+    AddObject(Strings[i],Objects[i]);
 end;
 
 procedure TStringList.Delete(index: integer);
