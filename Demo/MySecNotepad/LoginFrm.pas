@@ -92,7 +92,7 @@ const
   'On Via C3/C7 proc, will use fast LibPadlock.dll if available.'#13#13+
   'This program is free and comes with NO WARRANTY.'#13+
   'If you use it, please consider making a small donation to me.'#13#13+
-  '©2008-2014 Arnaud Bouchez - htp://synopse.info',
+  '©2008-2015 Arnaud Bouchez - htp://synopse.info',
   'Is this program useful for you?'#13'Please consider making a small donation!',
   'US&item_name=Donate%20for%20My%20Secure%20Notepad'
    );
@@ -113,7 +113,7 @@ const
   'Sur les Via C3/C7, les instructions rapides Padlock seront utilisées.'#13#13+
   'Ce programme est libre, d''utilisation gratuite, et SANS GARANTIE.'#13+
   'Si vous l''utilisez, merci de penser à faire un petit don d''encouragement.'#13#13+
-  '©2008-2014 Arnaud Bouchez - htp://synopse.info',
+  '©2008-2015 Arnaud Bouchez - htp://synopse.info',
   'Utilisez-vous ce programme?'#13'Merci de faire un petit don d''encouragement!',
   'FR&item_name=Don%20pour%20Mon%20Bloc-notes%20chiffre'
    );
