@@ -105,7 +105,7 @@ type
 
   TObjectList = class(TList)
   public
-    constructor Create;
+    constructor Create(AOwnObjects: boolean=true);
   end;
 
   TStringList = class;
@@ -555,10 +555,10 @@ end;
 
 { TObjectList }
 
-constructor TObjectList.Create;
+constructor TObjectList.Create(AOwnObjects: boolean=true);
 begin
-  inherited;
-  fOwnObjects := true; // do all the magic :)
+  inherited Create;
+  fOwnObjects := AOwnObjects; // do all the magic :)
 end;
 
 { TStringList }
