@@ -97,10 +97,10 @@ type
    property KeyPreview: boolean read fKeyPreview write fKeyPreview;
  end;
 
-{$M+} //  we use fields like Form1.Button1, so we need to publish them with $M+
+ {$M+} //  we use fields like Form1.Button1, so we need to publish them with $M+
  TForm = class(TCustomForm)
  end;
-{$M-}
+ {$M-}
 
  TApplication = class(TComponent)
  private

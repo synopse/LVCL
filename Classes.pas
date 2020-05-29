@@ -183,6 +183,7 @@ type
     function Read(var Buffer; Count: integer): integer; virtual; abstract;
     procedure ReadBuffer(var Buffer; Count: integer);
     function Write(const Buffer; Count: integer): integer; virtual; abstract;
+    procedure WriteBuffer(const Buffer; Count: integer);
     function Seek(Offset: Longint; Origin: Word): Longint; overload; virtual;
     function Seek(const Offset: Int64; Origin: TSeekOrigin): Int64; overload; virtual;
     procedure Clear;
@@ -1122,6 +1123,11 @@ end;
 procedure TStream.ReadBuffer(var Buffer; Count: integer);
 begin
   Read(Buffer,Count);
+end;
+
+procedure TStream.WriteBuffer(const Buffer; Count: integer);
+begin
+  Write(Buffer,Count)
 end;
 
 procedure TStream.SaveToFile(const FileName: string);
